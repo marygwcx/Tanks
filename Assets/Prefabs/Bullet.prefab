@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4088758129097267961}
   - component: {fileID: 3128886965682310420}
   - component: {fileID: 7696992932578474875}
-  - component: {fileID: 8827032996368148808}
+  - component: {fileID: -4911567013483135110}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -85,7 +85,7 @@ CapsuleCollider:
   m_Height: 0.2
   m_Direction: 2
   m_Center: {x: 0.2, y: 0.6, z: -0.56}
---- !u!114 &8827032996368148808
+--- !u!114 &-4911567013483135110
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 587288033cd41ad4db4b41fc21773306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionPrefab: {fileID: 9140291892121296208, guid: a8717c78509c0b842a959bf9290fb9d8, type: 3}
   speed: 20
   lifetime: 2
 --- !u!1001 &1175555770345051836

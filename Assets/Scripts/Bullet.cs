@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public GameObject explosionPrefab;
 
     public float speed = 20f;
     public float lifetime = 2f;
@@ -11,15 +12,26 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
-        Destroy(gameObject, lifetime);
+        Invoke("SelfDestruct", lifetime);
     }
-    private void Update()
+    void Update()
     {
         transform.position += transform.forward * speed * Time.deltaTime;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        var health = collision.gameObject.GetComponent<Health>();
+        if(health != null)
+        {
+            health.TakeDamage(10);
+        }
+        SelfDestruct();
+    }
+
+    void SelfDestruct()
+    {
+        Instantiate(explosionPrefab, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 
