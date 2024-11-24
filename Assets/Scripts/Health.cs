@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
     public Transform healthBar;
     public int maxHealth = 100;
     private int health;
+    public int noHealth = 0;
 
     private void Start()
     {
@@ -20,5 +22,13 @@ public class Health : MonoBehaviour
         health = Mathf.Min(health, maxHealth); //not more than maxHealth
 
         healthBar.localScale = new Vector3((float)health / maxHealth, 1, 1);
+    }
+
+    public void ChangeScene()
+    {
+        if(health == noHealth)
+        {
+            SceneManager.LoadScene("EndScene");
+        }
     }
 }

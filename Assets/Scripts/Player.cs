@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -13,6 +15,7 @@ public class Player : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
     public float fireRate = 0.5f;
+    private object other;
 
     private void Start()
     {
@@ -26,6 +29,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+
         var input = new Vector3();
 
         if (isPlayer1)
@@ -41,10 +45,22 @@ public class Player : MonoBehaviour
 
         transform.position += input * speed * Time.deltaTime;
 
-        if(input != Vector3.zero)
+        if (input != Vector3.zero)
         {
             transform.forward = input;
         }
-        
+
+    }
+    private void ChangeScene()
+    {
+        var health = gameObject.GetComponent<Health>();
+        if (isPlayer1 && Convert.ToInt32(health) == 0)
+        {
+            SceneManager.LoadScene("EndGame");
+        }
+        else if (!isPlayer1 && Convert.ToInt32(health) == 0)
+        {
+            SceneManager.LoadScene("EndGame");
+        }
     }
 }
